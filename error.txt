@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "take_frame.py", line 42, in <module>
+    take_frame('../dataset/IQIYI_VID_DATA_Part2')
+  File "take_frame.py", line 33, in take_frame
+    subprocess.check_output(command, shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 574, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+subprocess.CalledProcessError: Command 'ffmpeg -loglevel quiet -i ../dataset/IQIYI_VID_DATA_Part2/IQIYI_VID_VAL/IQIYI_VID_VAL_0059694.mp4 -vf fps=1 IQIYI_VID_DATA_Part2_out_jpg/IQIYI_VID_DATA_Part2/IQIYI_VID_VAL/IQIYI_VID_VAL_0059694.mp4/IQIYI_VID_VAL_0059694.mp4_%03d.jpg' returned non-zero exit status 1
+
+
+error ffmpeg -loglevel quiet -i ../dataset/IQIYI_VID_DATA_Part2/IQIYI_VID_VAL/IQIYI_VID_VAL_0059694.mp4 -vf fps=1 IQIYI_VID_DATA_Part2_out_jpg/IQIYI_VID_DATA_Part2/IQIYI_VID_VAL/IQIYI_VID_VAL_0059694.mp4/IQIYI_VID_VAL_0059694.mp4_%03d.jpg
+
+
+
+error ffmpeg -loglevel quiet -i ../dataset/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0107305.mp4 -vf fps=1 IQIYI_VID_DATA_Part2_out_jpg/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0107305.mp4/IQIYI_VID_TRAIN_0107305.mp4_%03d.jpg
+
+error ffmpeg -loglevel quiet -i ../dataset/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0123620.mp4 -vf fps=1 IQIYI_VID_DATA_Part2_out_jpg/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0123620.mp4/IQIYI_VID_TRAIN_0123620.mp4_%03d.jpg
+
+error ffmpeg -loglevel quiet -i ../dataset/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0103105.mp4 -vf fps=1 IQIYI_VID_DATA_Part2_out_jpg/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0103105.mp4/IQIYI_VID_TRAIN_0103105.mp4_%03d.jpg
+
+error ffmpeg -loglevel quiet -i ../dataset/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0005974.mp4 -vf fps=1 IQIYI_VID_DATA_Part2_out_jpg/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0005974.mp4/IQIYI_VID_TRAIN_0005974.mp4_%03d.jpg
+
+error ffmpeg -loglevel quiet -i ../dataset/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0039162.mp4 -vf fps=1 IQIYI_VID_DATA_Part2_out_jpg/IQIYI_VID_DATA_Part2/IQIYI_VID_TRAIN/IQIYI_VID_TRAIN_0039162.mp4/IQIYI_VID_TRAIN_0039162.mp4_%03d.jpg
+
+
