@@ -107,8 +107,12 @@ def calc_mean_average_precision():
             gt_count = 100
         confidence = sim_matrix[:, i]
 
-        ap = calc_ap(class_id, confidence, filename_to_id, gt_count,
-                     row_to_filename)
+        def index_to_class_id(index):
+            filename = row_to_filename[index]
+            id = filename_to_id[filename]
+            return id
+
+        ap = calc_ap(class_id, confidence, gt_count, index_to_class_id)
         class_to_ap[class_id] = ap
         # print(class_to_ap[class_id])
 
@@ -119,8 +123,7 @@ def calc_mean_average_precision():
     return mean_ap
 
 
-def calc_ap(class_id, confidence, filename_to_id, gt_count,
-            row_to_filename):
+def calc_ap(class_id, confidence, gt_count, index_to_class_id):
     # sort descending order
     #print(class_id, gt_count)
     arg_sort = np.argsort(-confidence)
@@ -128,8 +131,7 @@ def calc_ap(class_id, confidence, filename_to_id, gt_count,
     hit_count = 1
     precision = []
     for index in arg_sort:
-        filename = row_to_filename[index]
-        id = filename_to_id[filename]
+        id = index_to_class_id(index)
         if id == class_id:
             precision.append(hit_count / position)
             hit_count += 1
