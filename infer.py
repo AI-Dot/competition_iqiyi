@@ -59,27 +59,6 @@ def build_train_feature_matrix():
     return feature_matrix, row_index_to_filename
 
 
-def build_train_feature_matrix_mean():
-    row_index_to_filename = {}
-    npz_list = []
-    row_index = 0
-    for npz in glob.glob(TRAIN_NPZ_PATH):
-        head, tail = os.path.split(npz)
-        mp4_filename, npz_ext = os.path.splitext(tail)
-        # print(mp4_filename)
-
-        features = np.load(npz)
-        features = features.f.arr_0
-        npz_list.append(features)
-        for index in range(features.shape[0]):
-            row_index_to_filename[row_index] = mp4_filename
-            row_index += 1
-
-    feature_matrix = np.concatenate(tuple(npz_list), axis=0)
-    print(feature_matrix.shape)
-    return feature_matrix, row_index_to_filename
-
-
 def infer():
     train_dict = build_train_dict()
     valid_dict = build_valid_dict()
