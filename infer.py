@@ -88,6 +88,7 @@ def infer():
     print('hit: {0}, total: {1}, precision: {2}'.format(hit, total, hit / total))
 
 
-#build_train_dict()
-#build_train_feature_matrix()
-infer()
+if __name__ == "__main__":
+    #build_train_dict()
+    #build_train_feature_matrix()
+    infer()
