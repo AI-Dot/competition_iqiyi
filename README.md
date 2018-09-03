@@ -12,8 +12,9 @@
 | mtcnn + insightface + means knn (baseline) | none | none | 0.771192 | none | 0.82217 | none | 
 | mtcnn + insightface + our FC + means knn | 2.01 | none | 0.365657 | none | 0.4204 | none| 
 
+
 ## InsightFace+FC Usage:
-# Train steps:
+### Train steps:
 1. Git clone the InsightFace_TF reposity.
 2. Train the model by train_fc_only.py script in InsightFace repo.
 3. Evaluate the validate set by eval_map_fc_only.py script.
