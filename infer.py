@@ -68,6 +68,8 @@ def infer():
     total = 0
     hit = 0
 
+    misclassified = {}
+
     for npz in glob.glob(VALID_NPZ_PATH):
         head, tail = os.path.split(npz)
         mp4_filename, npz_ext = os.path.splitext(tail)
@@ -76,16 +78,21 @@ def infer():
         features = features.f.arr_0
 
         sim = np.dot(features, feature_matrix)
-        sim = np.sum(sim, axis=0)
+        sim = np.mean(sim, axis=0)
         index = np.argmax(sim)
 
         predict_id = train_dict[row_index_to_filename[index]]
         ground_truth = valid_dict[mp4_filename]
         if predict_id == ground_truth:
             hit += 1
+        else :
+            misclassified[mp4_filename] = (ground_truth, predict_id)
         total += 1
 
     print('hit: {0}, total: {1}, precision: {2}'.format(hit, total, hit / total))
+    print('miss predict: ')
+    for key, val in misclassified.iteritems():
+        print(key, val)
 
 
 if __name__ == "__main__":
