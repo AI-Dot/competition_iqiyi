@@ -5,6 +5,7 @@
 - [InsightFace_TF](https://github.com/auroua/InsightFace_TF)
 
 ## Experiment Report
+
 |  method   |   train loss | TRAIN mAP | VAL mAP | TRAIN Precision | VAL Precision | Test mAP |
 |:-:|-:|-:|-:|-:|-:|
 | mtcnn + insightface + means knn (baseline)| \ | \ | 0.771192 | \ | 0.82217 | \ |
