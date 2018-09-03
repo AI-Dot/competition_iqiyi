@@ -7,9 +7,9 @@
 ## Experiment Report
 
 |  method   |   train loss | TRAIN mAP | VAL mAP | TRAIN Precision | VAL Precision | Test mAP |
-|:-:|-:|-:|-:|-:|-:|
-| mtcnn + insightface + means knn (baseline)| \ | \ | 0.771192 | \ | 0.82217 | \ |
-| mtcnn + insightface + our FC + means knn | 2.01 | \ | 0.365657 | \ | 0.4204 | \| 
+|:----:| -- -:|----:| ---:|----:| ----:|
+| mtcnn + insightface + means knn (baseline)| none | none | 0.771192 | none | 0.82217 | none |
+| mtcnn + insightface + our FC + means knn | 2.01 | none | 0.365657 | none | 0.4204 | none| 
 
 ## InsightFace+FC Usage:
 # Train steps:
