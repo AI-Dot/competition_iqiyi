@@ -1,8 +1,16 @@
 # competition_iqiyi
-## ref
+## Ref
 - [mtcnn](https://github.com/pangyupo/mxnet_mtcnn_face_detection.git)
 - [insightface](https://github.com/deepinsight/insightface)
 - [InsightFace_TF](https://github.com/auroua/InsightFace_TF)
+
+## Dataset Details
+
+### Training Set Statistical Information (in log scale)
+![Training Set](https://raw.githubusercontent.com/AI-Dot/competition_iqiyi/master/imgs/train.png)
+
+### Validation Set Statistical Information (in log scale)
+![Validation Set](https://raw.githubusercontent.com/AI-Dot/competition_iqiyi/master/imgs/val.png)
 
 ## Experiment
 
