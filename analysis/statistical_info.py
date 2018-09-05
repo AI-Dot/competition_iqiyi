@@ -89,7 +89,7 @@ if __name__ == "__main__" :
     dataframe = dataframe.sort_values(by=['file_count'], ascending=False)
     fig, ax = plt.subplots(figsize=(10, 8))
     dataframe.plot(ax=ax, color=['b'])
-    fig.savefig('train.png')
+    fig.savefig('./imgs/train.png')
 
 
     _, val_id_to_filenames = build_valid_dict()
@@ -102,7 +102,7 @@ if __name__ == "__main__" :
     dataframe = dataframe.sort_values(by=['file_count'], ascending=False)
     fig, ax = plt.subplots(figsize=(10, 8))
     dataframe.plot(ax=ax, color=['g'])
-    fig.savefig('val.png')
+    fig.savefig('./imgs/val.png')
 
 
 
