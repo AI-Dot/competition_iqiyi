@@ -39,12 +39,12 @@ TRAIN_PART3_DATA_PATH =\
 VALID_PART3_DATA_PATH =\
     '../dataset/IQIYI_VID_DATA_Part3/IQIYI_VID_VAL'
 
-def build_train_dict():
+
+def build_train_dict(files):
     filename_to_id = {}
     id_to_filenames = {}
 
-    for file in [TRAIN_PART1_LABEL_PATH, TRAIN_PART2_LABEL_PATH,
-                 TRAIN_PART3_LABEL_PATH]:
+    for file in files:
         lines = [line.rstrip('\n') for line in open(file)]
         for line in lines:
             file, id = line.split()
@@ -57,12 +57,11 @@ def build_train_dict():
     return filename_to_id, id_to_filenames
 
 
-def build_valid_dict():
+def build_valid_dict(files):
     filename_to_id = {}
     id_to_filenames = {}
 
-    for file in [VALID_PART1_LABEL_PATH, VALID_PART2_LABEL_PATH,
-                 VALID_PART3_LABEL_PATH]:
+    for file in files:
         lines = [line.rstrip('\n') for line in open(file)]
         for line in lines:
             l = line.split()
@@ -79,7 +78,9 @@ def build_valid_dict():
 
 
 if __name__ == "__main__" :
-    _, train_id_to_filenames = build_train_dict()
+    _, train_id_to_filenames = build_train_dict([TRAIN_PART1_LABEL_PATH,
+                                                 TRAIN_PART2_LABEL_PATH,
+                                                 TRAIN_PART3_LABEL_PATH])
     to_pandas = {}
     for k, v in train_id_to_filenames.iteritems():
         to_pandas[k] = len(v)
@@ -92,7 +93,9 @@ if __name__ == "__main__" :
     fig.savefig('./imgs/train.png')
 
 
-    _, val_id_to_filenames = build_valid_dict()
+    _, val_id_to_filenames = build_valid_dict([VALID_PART1_LABEL_PATH,
+                                               VALID_PART2_LABEL_PATH,
+                                               VALID_PART3_LABEL_PATH])
     to_pandas = {}
     for k, v in val_id_to_filenames.iteritems():
         to_pandas[k] = len(v)
