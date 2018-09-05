@@ -189,7 +189,11 @@ def infer_2():
         index = np.argmax(sim)
 
         predict_id = row_index_to_id[index][0]
-        ground_truth = valid_dict[mp4_filename]
+
+        if mp4_filename in valid_dict :
+            ground_truth = valid_dict[mp4_filename]
+        else :
+            continue
 
         if predict_id == ground_truth:
             hit += 1
