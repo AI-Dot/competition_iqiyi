@@ -88,7 +88,7 @@ if __name__ == "__main__" :
                                            columns=['file_count'])
     dataframe = dataframe.sort_values(by=['file_count'], ascending=False)
     fig, ax = plt.subplots(figsize=(10, 8))
-    dataframe.plot(ax=ax, color=['b'])
+    dataframe.plot(ax=ax, color=['b'], logy=True)
     fig.savefig('./imgs/train.png')
 
 
@@ -101,7 +101,7 @@ if __name__ == "__main__" :
                                            columns=['file_count'])
     dataframe = dataframe.sort_values(by=['file_count'], ascending=False)
     fig, ax = plt.subplots(figsize=(10, 8))
-    dataframe.plot(ax=ax, color=['g'])
+    dataframe.plot(ax=ax, color=['g'], logy=True)
     fig.savefig('./imgs/val.png')
 
 
