@@ -10,12 +10,12 @@
 |  method   |  TRAIN mAP | VAL mAP | TRAIN Precision (infer_2) | VAL Precision | Test mAP | 
 | --------  |   ----:    | ------: | --------------: | ---------:    | -------: | 
 | mtcnn + insightface + means knn (baseline) | none | 0.771192 | none | 0.82217 | none | 
-| mtcnn + insightface + our FC + means knn |  none | 0.365657 | none | 0.4204 | none| 
+| mtcnn + insightface + our FC + means knn |  none | 0.365657 | 0.89025 | 0.4204 | none| 
 
 ### Partial Training Report
 |  method   |  TRAIN Loss | TRAIN Precision (infer) | VAL Precision | 
 | --------  |   ------:    | -------------: | -------------:|
-| our FC (512in_2048_512out) | 2.01 | none | 0.365657 | 
+| our FC (512in_2048_512out) | 2.01 | 0.904674 | 0.365657 | 
 
 
 
