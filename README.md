@@ -32,3 +32,8 @@
 1. Git clone the InsightFace_TF reposity.
 2. Train the model by train_fc_only.py script in InsightFace repo.
 3. Evaluate the validate set by eval_map_fc_only.py script.
+
+### Error Report Usage:
+1. Run my report.py 
+2. Then we will get a report.md
+3. export report.pdf by using the largest report.md printing page size.
