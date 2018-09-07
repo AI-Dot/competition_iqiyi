@@ -33,29 +33,72 @@ def find_files(directory, pattern):
     return result
 
 
+def find_dirs(directory, pattern):
+    result = {}
+
+    for root, dirs, files in os.walk(directory):
+        for basename in dirs:
+            if fnmatch.fnmatch(basename, pattern):
+                dir_name = os.path.join(root, basename)
+                result[basename] = dir_name
+
+    return result
+
+
 def makedir(dest):
     if not os.path.exists(dest):
         os.makedirs(dest)
 
 
 def take_face(path):
+    print('take_face ', path)
     head, tail = os.path.split(path)
     tail = tail + '_face'
     dest = tail
     makedir(dest)
 
     file_list = find_files(path, '*.jpg')
-    chunk_list = chunks(file_list, 20000)
+
+    tasks = []
+    for i, c in enumerate(chunks(file_list, 20000)):
+        tasks.append((i, c))
+
 
     with ProcessPoolExecutor(int(multiprocessing.cpu_count() / 2)) as executor:
-        executor.map(functools.partial(face_to_file, dest), chunk_list)
+        executor.map(functools.partial(face_to_file, dest), tasks)
 
 
-def face_to_file(dest, file_list):
-    detector = MtcnnDetector(model_folder='model', ctx=mx.cpu(0), num_worker=4,
+def check_take_face(path):
+    print('check_take_face ', path)
+    head, tail = os.path.split(path)
+    tail = tail + '_face'
+    dest = tail
+    makedir(dest)
+
+    not_complete = check_result(path, dest)
+
+    file_list = []
+    for d in not_complete:
+        file_list += find_files(d, '*.jpg')
+
+    tasks = []
+    for i, c in enumerate(chunks(file_list, 20000)):
+        tasks.append((i, c))
+
+    with ProcessPoolExecutor(int(multiprocessing.cpu_count() / 2)) as executor:
+        executor.map(functools.partial(face_to_file, dest), tasks)
+
+
+def face_to_file(dest, task):
+
+    # at least have three gpu, uses second and third gpu
+    detector = MtcnnDetector(model_folder='model',
+                             ctx=mx.cpu(0),
+                             #ctx=mx.gpu(int(task[0] / 2) + 1),
+                             num_worker=4,
                              accurate_landmark=False)
 
-    for file in file_list:
+    for file in task[1]:
         path_component = os.path.normpath(file).split(os.path.sep)
 
         for i, c in enumerate(path_component):
@@ -89,6 +132,27 @@ def face_to_file(dest, file_list):
             print('no face in ', file)
 
 
-#take_face('./IQIYI_VID_DATA_Part1_out_jpg')
-take_face('./IQIYI_VID_DATA_Part2_out_jpg')
-#take_face('./test_data_jpg_1')
+def check_result(src_path, dest_path):
+    src_dirs = find_dirs(src_path, '*.mp4')
+    dest_dirs = find_dirs(dest_path, '*.mp4')
+
+    diff = list(set(src_dirs.keys()) - set(dest_dirs.keys()))
+
+    result = []
+    for d in diff:
+        result.append(src_dirs[d])
+
+    return result
+
+
+
+if __name__ == '__main__':
+    #take_face('./IQIYI_VID_DATA_Part1_out_jpg')
+
+    take_face('./IQIYI_VID_DATA_Part2_out_jpg')
+    #check_take_face('./IQIYI_VID_DATA_Part2_out_jpg')
+
+    #take_face('./IQIYI_VID_DATA_Part3_out_jpg')
+    #check_take_face('./IQIYI_VID_DATA_Part3_out_jpg')
+
+    #take_face('./test_data_jpg_1')
