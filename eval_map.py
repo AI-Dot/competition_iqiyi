@@ -220,9 +220,9 @@ def infer_2():
     print(
         'hit_2: {0}, total_2: {1}, precision: {2}'.format(hit_2, total_2, hit_2 / total_2))
 
-    #print('miss predict: ')
-    #for key, val in misclassified.iteritems():
-    #    print(key, val)
+    print('miss predict: ')
+    for key, val in misclassified.iteritems():
+        print('{0} {1} {2}'.format(key, val[0], val[1]))
 
 
 if __name__ == "__main__":

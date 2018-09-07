@@ -95,7 +95,7 @@ def infer():
     print('hit: {0}, total: {1}, precision: {2}'.format(hit, total, hit / total))
     print('miss predict: ')
     for key, val in misclassified.iteritems():
-        print(key, val)
+        print('{0} {1} {2}'.format(key, val[0], val[1]))
 
 
 if __name__ == "__main__":

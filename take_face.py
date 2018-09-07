@@ -28,7 +28,6 @@ def take_face(path):
     makedir(dest)
 
     for file in find_files(path, '*.jpg'):
-        print(file)
         path_component = os.path.normpath(file).split(os.path.sep)
 
         for i, c in enumerate(path_component):
@@ -57,6 +56,8 @@ def take_face(path):
             chips = detector.extract_image_chips(img, points, 256, 0.37)
             for i, chip in enumerate(chips):
                 cv2.imwrite('{0}/{1}_{2}.jpg'.format(jpg_dest, basename, i), chip)
+        else:
+            print('no face in ', file)
 
 
 def makedir(dest):
@@ -65,4 +66,5 @@ def makedir(dest):
 
 
 #take_face('./IQIYI_VID_DATA_Part1_out_jpg')
-take_face('./test_data_jpg_1')
+take_face('./IQIYI_VID_DATA_Part3_out_jpg')
+#take_face('./test_data_jpg_1')
